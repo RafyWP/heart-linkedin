@@ -1,18 +1,18 @@
-# Heart LinkedIn Block
+# Heart LinkedIn
 
-**Autor:** Rafy  
-**Versão:** 1.0.0  
+**Autor:** Rafy Co.  
+**Versão:** 0.1.0  
 **Licença:** GPLv2 ou posterior  
 **Requer WordPress:** 6.0+  
 **Testado até:** 6.5  
 **Tags:** linkedin, bloco, like, coração, comentário, interação  
-**Namespace PHP:** `RafyCo\HeartLinkedinBlock`
+**Namespace PHP:** `RafyCo\HeartLinkedin`
 
 ---
 
 ## Descrição
 
-O **Heart LinkedIn Block** adiciona um bloco visual ao editor Gutenberg que permite:
+O **Heart LinkedIn** adiciona um bloco visual ao editor Gutenberg que permite:
 
 - Exibir um botão de "Curtir" com ícone de coração (interativo).
 - Mostrar um botão de comentário no LinkedIn com link personalizado.
@@ -33,7 +33,7 @@ Totalmente compatível com o editor de blocos, segue os padrões de codificaçã
 ✅ REST API para registrar likes/deslikes com segurança baseada em token e nonce  
 ✅ Script JavaScript modular e CSS separado  
 ✅ Página de configurações com campo de token  
-✅ Shortcode `[rafy_heart_linkedin]` para usar o bloco via código
+✅ Shortcode `[heart_linkedin]` para usar o bloco via código
 
 ---
 
@@ -41,7 +41,7 @@ Totalmente compatível com o editor de blocos, segue os padrões de codificaçã
 
 1. Faça o upload da pasta do plugin para o diretório `wp-content/plugins/` ou instale via painel do WordPress.  
 2. Ative o plugin no menu **Plugins**.  
-3. Vá até **Configurações > Heart LinkedIn Block** e insira seu token de integração.  
+3. Vá até **Configurações > Heart LinkedIn** e insira seu token de integração.  
 4. No editor de blocos, insira o bloco **Heart LinkedIn**.  
 5. Configure os campos personalizados do post (`likes`, `in_post`) conforme necessário.
 
@@ -61,7 +61,7 @@ Totalmente compatível com o editor de blocos, segue os padrões de codificaçã
 Você pode usar o plugin também via shortcode:
 
 ```php
-echo do_shortcode('[rafy_heart_linkedin]');
+echo do_shortcode('[heart_linkedin]');
 ```
 
 ---
@@ -69,18 +69,16 @@ echo do_shortcode('[rafy_heart_linkedin]');
 ## Estrutura
 
 ```
-heart-linkedin-block/
+heart-linkedin/
 ├── assets/
 │   ├── css/
 │   │   └── heart-linkedin.css
 │   └── js/
 │       └── heart-linkedin.js
 ├── includes/
-│   ├── Settings.php
-│   ├── Styles.php
-│   ├── RestAPI.php
-│   └── Helpers.php
-├── heart-linkedin-block.php
+│   ├── admin-settings.php
+│   ├── rest-api.php
+├── heart-linkedin.php
 └── README.md
 ```
 
@@ -109,4 +107,4 @@ Este plugin está licenciado sob a GPLv2 ou posterior.
 ## Desenvolvido por
 
 **Rafy**  
-[rafy.site](https://rafy.site) • [GitHub](https://github.com/RafyWP) • [Contato](https://rafy.site/contact)
+[rafy.com.br](https://rafy.com.br) • [GitHub](https://github.com/RafyWP) • [Contato](https://rafy.com.br/contato)
