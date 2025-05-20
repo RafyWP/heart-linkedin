@@ -14,7 +14,7 @@
  * Plugin Name:       Heart LinkedIn Block
  * Plugin URI:        https://rafy.com.br/project/heart-linkedin
  * Description:       LinkedIn like and comment button.
- * Version:           0.1.0
+ * Version:           0.1.2
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Rafy Co.
@@ -40,8 +40,8 @@ require_once HLB_DIR . 'includes/admin-settings.php';
 
 // Enqueue assets
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('heart-linkedin-css', HLB_URL . 'assets/css/heart-linkedin.css', [], '0.1.0');
-    wp_enqueue_script('heart-linkedin-js', HLB_URL . 'assets/js/heart-linkedin.js', ['jquery'], '0.1.0', true);
+    wp_enqueue_style('heart-linkedin-css', HLB_URL . 'assets/css/heart-linkedin.css', [], '0.1.2');
+    wp_enqueue_script('heart-linkedin-js', HLB_URL . 'assets/js/heart-linkedin.js', ['jquery'], '0.1.2', true);
     
     wp_localize_script( 'heart-linkedin-js', 'HeartLinkedinVars', [
         'ajaxUrl'    => esc_url_raw( rest_url( 'heart-linkedin/v1/toggle' ) ),
@@ -74,33 +74,28 @@ function rafy_render_heart_linkedin_block($attributes, $content) {
 
     $linkedin_url = get_field('in_post', $post_id) ?: 'https://www.linkedin.com/shareArticle?mini=true&url=' . get_permalink($post_id);
 
-    ob_start();
-    ?>
-    <!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-    <div class="wp-block-group rafy-heart-group" data-post-id="<?php echo esc_attr($post_id); ?>" data-liked="<?php echo esc_attr($liked ? '1' : '0'); ?>">
-        <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-        <div class="wp-block-group rafy-heart-wrapper">
-            <!-- wp:image -->
-            <figure class="wp-block-image size-full"><img src="<?php echo esc_url($img_src); ?>" alt="" class="rafy-heart-image" /></figure>
-            <!-- /wp:image -->
+    $output = '';
+    $output .= '<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->';
+    $output .= '<div class="wp-block-group rafy-heart-group" data-post-id="' . esc_attr($post_id) . '" data-liked="' . esc_attr($liked ? '1' : '0') . '">';
+    $output .= '<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->';
+    $output .= '<div class="wp-block-group rafy-heart-wrapper">';
+    $output .= '<!-- wp:image -->';
+    $output .= '<figure class="wp-block-image size-full"><img src="' . esc_url($img_src) . '" alt="" class="rafy-heart-image" /></figure>';
+    $output .= '<!-- /wp:image -->';
+    $output .= '<!-- wp:paragraph {"fontSize":"small"} -->';
+    $output .= '<p class="has-small-font-size rafy-heart-text">Curtir</p>';
+    $output .= '<!-- /wp:paragraph -->';
+    $output .= '</div>';
+    $output .= '<!-- /wp:group -->';
+    $output .= '<!-- wp:buttons -->';
+    $output .= '<div class="wp-block-buttons">';
+    $output .= '<!-- wp:button -->';
+    $output .= '<div class="wp-block-button"><a href="' . esc_url($linkedin_url) . '" target="_blank" rel="noopener" class="wp-block-button__link has-pure-white-color has-ocean-blaze-background-color has-text-color has-background has-link-color has-small-font-size has-custom-font-size wp-element-button rafy-linkedin-button">Comentar no <strong>LinkedIn</strong> <strong>↗</strong></a></div>';
+    $output .= '<!-- /wp:button -->';
+    $output .= '</div>';
+    $output .= '<!-- /wp:buttons -->';
+    $output .= '</div>';
+    $output .= '<!-- /wp:group -->';
 
-            <!-- wp:paragraph {"fontSize":"small"} -->
-            <p class="has-small-font-size rafy-heart-text">Curtir</p>
-            <!-- /wp:paragraph -->
-        </div>
-        <!-- /wp:group -->
-
-        <!-- wp:buttons -->
-        <div class="wp-block-buttons">
-            <!-- wp:button -->
-            <div class="wp-block-button">
-                <a href="<?php echo esc_url($linkedin_url); ?>" target="_blank" rel="noopener" class="wp-block-button__link has-pure-white-color has-ocean-blaze-background-color has-text-color has-background has-link-color has-small-font-size has-custom-font-size wp-element-button rafy-linkedin-button">Comentar no <strong>LinkedIn</strong> <strong>↗</strong></a>
-            </div>
-            <!-- /wp:button -->
-        </div>
-        <!-- /wp:buttons -->
-    </div>
-    <!-- /wp:group -->
-    <?php
-    return ob_get_clean();
+    return $output;
 }

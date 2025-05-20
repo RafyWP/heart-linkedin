@@ -1,7 +1,7 @@
 # Heart LinkedIn
 
 **Autor:** Rafy Co.  
-**Versão:** 0.1.0  
+**Versão:** 0.1.2  
 **Licença:** GPLv2 ou posterior  
 **Requer WordPress:** 6.0+  
 **Testado até:** 6.5  
