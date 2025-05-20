@@ -1,0 +1,39 @@
+.rafy-heart-group {
+    align-items: center;
+}
+
+.rafy-heart-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rafy-heart-image {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.rafy-heart-text {
+    cursor: pointer;
+    margin: 0;
+}
+
+.rafy-linkedin-button {
+    color: var(--wp--preset--color--pure-white);
+    background-color: var(--wp--preset--color--ocean-blaze);
+    padding-top: var(--wp--preset--spacing--20);
+    padding-bottom: var(--wp--preset--spacing--20);
+    padding-left: 24px;
+    padding-right: 24px;
+    font-size: var(--wp--preset--font-size--small);
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.rafy-linkedin-button:hover {
+    background-color: var(--wp--preset--color--ocean-blaze-hover, #d9480f);
+}
