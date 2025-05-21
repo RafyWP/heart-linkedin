@@ -24,7 +24,6 @@
  * Text Domain:       heart-linkedin
  * Domain Path:       /languages
  * Update URI:        https://github.com/RafyWP/heart-linkedin/tree/master
- * Network:           true
  */
 
 defined('ABSPATH') || exit;
